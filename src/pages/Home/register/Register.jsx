@@ -3,9 +3,9 @@
 import { Link, Navigate } from 'react-router-dom';
 import { updateProfile } from "firebase/auth";
 import { useContext } from 'react';
-import { AuthContext } from '../provider/AuthProvider';
 import css from "./Register.css"
 import swal from 'sweetalert';
+import { AuthContext } from '../../../provider/AuthProvider';
 
 const Register = () => {
 

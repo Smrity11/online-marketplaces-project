@@ -1,8 +1,8 @@
-
-
+/* eslint-disable no-unused-vars */
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { AuthContext } from "../provider/AuthProvider";
+import { AuthContext } from "../../provider/AuthProvider";
+import css from "./Navbar.css"
 
 
 const Navbar = () => {
@@ -109,47 +109,61 @@ Requests
           </div> 
           <div className="flex-1 px-2 mx-2 flex items-center justify-center">
             {/* Left part (Logo) */}
-            <div className="flex-none">
-              <img src="path_to_your_logo_image" alt="Logo" className="h-8 w-auto" />
-            </div>
+            <div className="flex gap[0px]  items-center">
+           <div className="grid  justify-center md:text-center md:ml-[-30px]">
+           <img
+              className="w-[100px] ml-[-15px] md:ml-0 h-[45px] md:w-[150px] md:h-[85px]  text-white"
+              src="https://i.ibb.co/yFMpRY7/istockphoto-1398833336-612x612-removebg-preview-1.png"
+            ></img>
+            <small className="text-[10px] md:mt-[-10px] ">TC Marketplace</small>
+           </div>
+           <div>
+           <h2 className="text-lg ml-[-10px] md:ml-0 md:text-2xl  text-[#ffeac2]">
+          <span className="text-fuchsia-400 text-2xl md:text-4xl  font-bold">T</span>ech
+              <span className="text-fuchsia-400 text-2xl font-bold md:text-4xl">c</span>anvas
+            </h2>
+           </div>
+          </div>
             {/* Middle part (Menu) */}
             <div className="hidden lg:flex flex-1 justify-center">
-              <ul className="menu menu-horizontal space-x-4">
+              <ul className="menu menu-horizontal space-x-3 uppercase">
               {AllServices}
               </ul>
             </div>
             {/* Right part (User info and logout button) */}
-            {user ? (
+         
+         {user ? (
             <>
-             <div className="grid justify-center items-center mx-auto ">
+             <div className="grid justify-center  items-center mx-auto mx-4 md:mr-12">
              <div className="avatar online mx-auto">
-  <div className="w-7 md:w-11  rounded-full">
+  <div className="w-7 md:w-11  rounded-full ">
     <img src={user?.photoURL} />
   </div>
 </div>
              <p className="text-xs md:text-base text-center">{user?.displayName}</p>
              </div>
               
-              <button onClick={handleLogOut} className="btn rounded-lg md:rounded-full w-12 md:w-24 text-[#ffd485]  text-xs lowercase md:text-base   border-[#ffd485] bg-black">
+              <button onClick={handleLogOut} className="btn rounded-lg md:rounded-full w-12 md:w-24 text-white  text-xs lowercase md:text-base bg-blue-950  border-white ">
                 Sign Out
               </button>
             </>
           ) : (
             <Link
               to="/login"
-              className="btn rounded-lg text-xs md:text-base  md:rounded-full w-12 md:w-24 text-[#ffd485] bg-black border-[#ffd485] "
+              className="btn rounded-lg text-xs md:text-base  md:rounded-full w-12 md:w-24 text-white bg-blue-950 border-white "
             >
               Login
             </Link>
           )}
+         </div>
           </div>
-        </div>
+        
         {/* Page content here */}
-        Content
+        
       </div> 
       <div className="drawer-side">
         <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label> 
-        <ul className="menu p-4 w-80 min-h-full bg-base-200">
+        <ul className="menu p-4 w-80 min-h-full bg-blue-950">
           {/* Sidebar content here */}
           {AllServices}
         </ul>

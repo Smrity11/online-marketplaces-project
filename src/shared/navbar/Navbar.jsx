@@ -134,7 +134,7 @@ Requests
          
          {user ? (
             <>
-             <div className="grid justify-center  items-center mx-auto mx-4 md:mr-12">
+             <div className="grid justify-center  items-center mx-auto  md:mr-12">
              <div className="avatar online mx-auto">
   <div className="w-7 md:w-11  rounded-full ">
     <img src={user?.photoURL} />
@@ -157,9 +157,7 @@ Requests
           )}
          </div>
           </div>
-        
         {/* Page content here */}
-        
       </div> 
       <div className="drawer-side">
         <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label> 

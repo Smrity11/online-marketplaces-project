@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaGoogle } from 'react-icons/fa';
 import { useContext } from "react";
 import swal from "sweetalert";
-import css from "./Login.css"
+// import css from "./Login.css"
 import { AuthContext } from "../../../provider/AuthProvider";
 
 
@@ -39,12 +39,12 @@ const Login = () => {
         .then((result) => {
           const user = result.user;
           console.log(user);
+        
           navigate("/")
          
         }).catch((error) => {
           const errorMessage = error.message;
           console.log(errorMessage);
-        
         })
     }
   return (
@@ -80,11 +80,11 @@ const Login = () => {
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
                         </div>
-                        <div className="form-control ">
+                    </form>
+                    <div className="form-control">
                             <button className=" text-white border py-1 rounded">Login</button>
                             <button onClick={handleGoogleSignIn} className="btn border-blue-600 mt-4"><span ><FaGoogle ></FaGoogle></span> Login with google</button>
                         </div>
-                    </form>
                     <p className='my-4 text-center'>New to this website? <Link className='text-purple-400 font-bold' to="/register">Sign Up</Link></p>
                 </div>
             </div>

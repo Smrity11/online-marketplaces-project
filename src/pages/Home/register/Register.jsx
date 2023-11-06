@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { updateProfile } from "firebase/auth";
 import { useContext } from 'react';
 import css from "./Register.css"
@@ -8,16 +8,14 @@ import swal from 'sweetalert';
 import { AuthContext } from '../../../provider/AuthProvider';
 
 const Register = () => {
-
+    const navigate =useNavigate()
     const { createUser } = useContext(AuthContext);
 
     const handleRegister = (event) => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
-    
         const email = form.email.value;
-    
         const password = form.password.value;
         const photo = form.photo.value;
     
@@ -33,7 +31,7 @@ const Register = () => {
           .then((result) => {
             const createdUser = result.user;
             profileUpdate(name, photo, createdUser);
-            Navigate("/");
+            navigate("/");
             if (createdUser) {
               swal("Welcome", "Registration successfully", "success");
             }
@@ -43,21 +41,23 @@ const Register = () => {
               swal("Failed", " Please fill out all field ", "error");
             }
           });
+
+          const profileUpdate = (name, photo, createdUser) => {
+            updateProfile(createdUser, {
+              displayName: name,
+              photoURL: photo,
+            })
+              .then((result) => {
+                const createdUser = result.user;
+                console.log(createdUser);
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          };
       };
 
-      const profileUpdate = (name, photo, createdUser) => {
-        updateProfile(createdUser, {
-          displayName: name,
-          photoURL: photo,
-        })
-          .then((result) => {
-            const createdUser = result.user;
-            console.log(createdUser);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      };
+     
 
 
     return (

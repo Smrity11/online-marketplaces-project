@@ -1,8 +1,46 @@
+import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const MyPostedJobs = () => {
-    const jobs = useLoaderData()
+    const lodedJobs = useLoaderData()
+
+    const [jobs, setJobs] = useState(lodedJobs);
+
+  const handleDelete = _id =>{
+    console.log(_id);
+    Swal.fire({
+title: 'Are you sure?',
+text: "You won't be able to revert this!",
+icon: 'warning',
+showCancelButton: true,
+confirmButtonColor: '#3085d6',
+cancelButtonColor: '#d33',
+confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+if (result.isConfirmed) {
+
+fetch(`http://localhost:5000/postjob/${_id}`,{
+   method:"DELETE"
+})
+.then(res => res.json())
+.then(data =>{
+   if(data.deletedCount > 0){
+        Swal.fire(
+ 'Deleted!',
+ 'Your file has been deleted.',
+ 'success'
+)
+const remaining = jobs.filter(jobb => jobb._id !== _id)
+setJobs(remaining) ;
+   }
+})
+}
+})
+}
+
+
     return (
         <div className=" grid grid-cols-1 md:grid-cols-3 justify-center items-center gap-24 my-24 px-9 md:px-24">
            {
@@ -21,7 +59,7 @@ const MyPostedJobs = () => {
     <p className="my-3">{job?.description}</p>
     <div className="card-actions justify-end">
       <button className="btn btn-primary"><Link to={`update/${job._id}`}>UPDATE</Link></button>
-      <button className="btn btn-outline btn-error">DELETE</button>
+      <button  onClick={() => handleDelete(job._id)} className="btn btn-outline btn-error">DELETE</button>
     </div>
   </div>
 </div>

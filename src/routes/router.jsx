@@ -57,8 +57,8 @@ const router = createBrowserRouter([
             element: <PrivateRoute><MyBids></MyBids></PrivateRoute>,
         },
         {
-            path: "bidrequest ",
-            element: <BidRequests></BidRequests>,
+            path: "bidsrequest",
+            element: <PrivateRoute><BidRequests></BidRequests></PrivateRoute>,
         },
       
       ]

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from "react";
 import auth from "../firebase/firebase.config";
@@ -9,6 +10,7 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
 } from "firebase/auth";
+import axios from "axios";
 
 
 export const AuthContext = createContext(null);
@@ -37,15 +39,32 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
   useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
-    
-      setLoading(false);
+    const unsubscribe = onAuthStateChanged(auth, currentUser => {
+        const userEmail = currentUser?.email || user?.email;
+        const loggedUser = { email: userEmail };
+        setUser(currentUser);
+        console.log('current user', currentUser);
+        setLoading(false);
+        // if user exists then issue a token
+        if (currentUser) {
+            axios.post('http://localhost:5000/jwt', loggedUser, { withCredentials: true })
+                .then(res => {
+                    console.log('token response', res.data);
+                })
+        }
+        else {
+            axios.post('http://localhost:5000/logout', loggedUser, {
+                withCredentials: true
+            })
+                .then(res => {
+                    console.log(res.data);
+                })
+        }
     });
     return () => {
-      unSubscribe();
-    };
-  }, []);
+        return unsubscribe();
+    }
+}, [])
 
   const authinfo = { user, loading, createUser, signIn, googleSignIn, logOut };
   return (

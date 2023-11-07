@@ -11,7 +11,7 @@ const AddJob = () => {
   const handleForm = (e) => {
     e.preventDefault();
     const form = e.target;
-    // const email = form.email.value;
+    const email = form.email.value;
     const  title = form.title.value;
     const deadline = form.deadline.value;
     const description = form.description.value;
@@ -19,10 +19,10 @@ const AddJob = () => {
     const Maximumprice = form.Maximumprice.value;
     const category = form.category.value
     const newJobs = {
-    //    email,
-       category,
-  title,
-  deadline,
+       email,
+        category,
+      title,
+      deadline,
       description,
       Minimumprice,
       Maximumprice,
@@ -31,7 +31,7 @@ const AddJob = () => {
    
 
     // send data to the server
-    fetch("http://localhost:5000/postjob", {
+    fetch("http://localhost:5000/allpostJob", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -75,7 +75,7 @@ const AddJob = () => {
               <input
                 name="email"
                 type="text"
-                placeholder={user?.email}
+                defaultValue={user?.email}
                 readOnly
                 className="input input-bordered w-full inputbox"
               />

@@ -8,16 +8,16 @@ import GraphicsDesign from './GraphicsDesign';
 
 const CategoryTab = () => {
     return (
-        <div>
+        <div className='md:px-8'>
     
              <Tabs>
     <TabList className="flex text-center text-2xl bg-blue-950 text-white h-[70px] md:h-[50px]">
-      <Tab className="w-1/3 cursor-pointer font-bold border-r-2">Web Development</Tab>
-      <Tab className="w-1/3 cursor-pointer font-bold border-r-2 border-l-2"> Digital Marketing</Tab>
-      <Tab className="w-1/3 cursor-pointer font-bold border-l-2"> Graphics Design.</Tab>
+      <Tab className="w-1/3 cursor-pointer font-bold border-2">Web Development</Tab>
+      <Tab className="w-1/3 cursor-pointer font-bold border-2 border-l-2"> Digital Marketing</Tab>
+      <Tab className="w-1/3 cursor-pointer font-bold border-2"> Graphics Design.</Tab>
     </TabList>
 
-   <div className='px-8 md:px-16 lg:px-20 my-10'>
+   <div className='px-8  my-10'>
    <TabPanel>
      <WevDevelopment></WevDevelopment>
     </TabPanel>

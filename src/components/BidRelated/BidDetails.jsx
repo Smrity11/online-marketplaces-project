@@ -20,10 +20,24 @@ const BidDetails = () => {
         const email = form.email.value
         const deadline = form.deadline.value
         const price = form.price.value
-        const buyeremail = form.buyeremail.value
+      
 
-        const bookingjob={email,deadline,price,buyeremail ,title}
-       
+
+        if (user?.email === email) {
+          // Show alert if user's email matches the job's email
+          Swal.fire({
+              title: "Error",
+              text: "You cannot bid on your own project!",
+              icon: "error",
+              confirmButtonText: "OK",
+          });
+      } else {
+          const bookingjob = {
+              deadline,
+              price,
+              buyeremail: email,
+              title,
+          }
 
         // send data to the server
         fetch('http://localhost:5000/bookingjob', {
@@ -47,7 +61,7 @@ const BidDetails = () => {
         })
     }
     
-
+  }
 
     return (
         <div>
@@ -125,12 +139,18 @@ const BidDetails = () => {
                 />
               </label>
             </div>
+        <div>
+          
             <input type="submit" value='Bid on the project' className="btn btn-wide md:w-[500px] font-extrabold mx-auto grid justify-center"></input>
+
+         
+        </div>
+
         </form>
       </div>
         </div>
         </div>
     );
-};
+}
 
-export default BidDetails;
+export default BidDetails

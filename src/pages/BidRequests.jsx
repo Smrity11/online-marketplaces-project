@@ -49,7 +49,7 @@ const BidRequests = () => {
 
 
   const handleBookingConfirm = id => {
-    fetch(`http://localhost:5000/bookings/${id}`, {
+    fetch(`http://localhost:5000/bookingjob/${id}`, {
         method: 'PATCH',
         headers: {
             'content-type': 'application/json'

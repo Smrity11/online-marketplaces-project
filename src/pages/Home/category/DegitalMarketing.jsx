@@ -22,10 +22,10 @@ const DegitalMarketing = () => {
     const filteredcategory = webDatas.filter(webData => webData.category === "digital marketing");
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center items-center gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center items-center gap-7">
             {isLoading ? (
                 
-                <div className="loader">Loading...</div>
+              <span className="loading loading-spinner loading-lg flex h-[90vh] items-center my-auto mx-auto"></span>
             ) : (
                
                 filteredcategory.map(web => (

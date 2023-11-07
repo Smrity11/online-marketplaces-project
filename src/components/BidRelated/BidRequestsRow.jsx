@@ -2,7 +2,7 @@
 
 
 const BidRequestsRow = ({ booking ,handleDelete ,handleBookingConfirm}) => {
-    const { _id, deadline, email, price,title } = booking;
+    const { _id, deadline, email, price,title,status } = booking;
 
     return (
         <tr className="text-[19px]">

@@ -9,6 +9,8 @@ import Login from "../pages/Home/login/Login";
 import Register from "../pages/Home/register/Register";
 import PrivateRoute from "./PrivateRoute";
 import UpdateJob from "../components/UpdateJob";
+import Home from "../pages/Home/Home";
+import BidDetails from "../components/BidRelated/BidDetails";
 
 
 
@@ -18,6 +20,10 @@ const router = createBrowserRouter([
       element: <Main></Main>,
      errorElement:<Error></Error> ,
       children:[
+        {
+            path: "/",
+            element: <Home></Home>,
+        },
         {
             path: "login",
             element: <Login></Login>,
@@ -40,7 +46,11 @@ const router = createBrowserRouter([
             element: <PrivateRoute><UpdateJob></UpdateJob></PrivateRoute>,
             loader: ({params}) => fetch(`http://localhost:5000/postJob/${params.id}`)
         },
-       
+
+        {
+            path: "jobs/:id",
+            element: <BidDetails></BidDetails>,
+        },
         {
             path: "mybids",
             element: <MyBids></MyBids>,

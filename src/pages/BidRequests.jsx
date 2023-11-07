@@ -48,6 +48,28 @@ const BidRequests = () => {
   };
 
 
+  const handleBookingConfirm = id => {
+    fetch(`http://localhost:5000/bookings/${id}`, {
+        method: 'PATCH',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify({ status: 'confirm' })
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if (data.modifiedCount > 0) {
+                // update state
+                const remaining = bids.filter(booking => booking._id !== id);
+                const updated = bids.find(booking => booking._id === id);
+                updated.status = 'confirm'
+                const newBookings = [updated, ...remaining];
+                setBids(newBookings);
+            }
+        })
+}
+
   return (
     <div className="h-[120vh] md:h-[100vh] px-7">
       <h2 className="text-3xl text-center uppercase py-10 font-bold"> Bid Requests: {bids.length}</h2>
@@ -70,6 +92,7 @@ const BidRequests = () => {
                                 key={bid._id}
                                 booking={bid}
                                 handleDelete={handleDelete}
+                                handleBookingConfirm={handleBookingConfirm}
                             ></BidRequestsRow>)
                         }
              

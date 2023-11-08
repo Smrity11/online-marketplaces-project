@@ -14,16 +14,19 @@ const BidDetails = () => {
     const{_id,email,deadline ,title} = jobData
     console.log('jobdata id' , _id);
   
+
+   
     const handleForm = e =>{
         e.preventDefault()
         const form = e.target
         const email = form.email.value
+        const buyerEmail = form.buyeremail.value
         const deadline = form.deadline.value
         const price = form.price.value
       
 
 
-        if (user?.email === email) {
+        if (user?.email ===! email) {
           // Show alert if user's email matches the job's email
           Swal.fire({
               title: "Error",
@@ -35,7 +38,8 @@ const BidDetails = () => {
           const bookingjob = {
               deadline,
               price,
-              buyeremail: email,
+              buyerEmail,
+              email,
               title,
           }
 

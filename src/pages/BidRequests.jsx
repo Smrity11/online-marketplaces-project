@@ -3,12 +3,17 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
 import BidRequestsRow from "../components/BidRelated/BidRequestsRow";
+import { useLoaderData } from "react-router-dom";
 
 
 const BidRequests = () => {
   const { user } = useContext(AuthContext);
-
+  const dataload = useLoaderData()
   const [bids, setBids] = useState([]);
+
+
+ const filtereddata = dataload.filter(webData => webData.buyerEmail === user?.email);
+ console.log(filtereddata);
 
   //   const axiosSecure = useAxiosSecure();
 
@@ -72,7 +77,7 @@ const BidRequests = () => {
 
   return (
     <div className="h-[120vh] md:h-[100vh] px-7">
-      <h2 className="text-3xl text-center uppercase py-10 font-bold"> Bid Requests: {bids.length}</h2>
+      <h2 className="text-3xl text-center uppercase py-10 font-bold"> Bid Requests</h2>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           {/* head */}
@@ -86,9 +91,10 @@ const BidRequests = () => {
               <th>Status</th>
             </tr>
           </thead>
-          <tbody>
           {
-            bids.map(bid => <BidRequestsRow
+            filtereddata ? <tbody>
+          {
+            filtereddata.map(bid => <BidRequestsRow
                                 key={bid._id}
                                 booking={bid}
                                 handleDelete={handleDelete}
@@ -96,7 +102,8 @@ const BidRequests = () => {
                             ></BidRequestsRow>)
                         }
              
-          </tbody>
+          </tbody> : <p className=" text-base mt-10 font-bold ">No Job Requests</p>
+          }
         </table>
       </div>
     </div>

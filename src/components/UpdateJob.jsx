@@ -42,7 +42,7 @@ const UpdateJob = () => {
             if(data.insertedId){
               Swal.fire({
                 tittle: "success",
-                text: "product updated successfully",
+                text: "Job updated successfully",
                 icon: "success",
                 confirmButtonText: "Cool",
               });
@@ -64,7 +64,7 @@ const UpdateJob = () => {
           <div className="flex gap-7 mb-6">
             <div className="form-control md:w-1/2">
               <label className="label">
-                <span className="label-text">Email</span>
+                <span className="label-text text-white text-xl">Email</span>
               </label>
               <label className="input-group">
                 
@@ -79,7 +79,7 @@ const UpdateJob = () => {
             </div>
             <div className="form-control md:w-1/2">
             <label className="label">
-              <span className="label-text">Category</span>
+              <span className="label-text text-white text-xl">Category</span>
             </label>
             <label className="input-group">
               <input
@@ -96,7 +96,7 @@ const UpdateJob = () => {
           <div className="flex gap-7 mb-6">
             <div className="form-control md:w-1/2">
               <label className="label">
-                <span className="label-text">Title</span>
+                <span className="label-text text-white text-xl">Title</span>
               </label>
               <label className="input-group">
                 
@@ -111,7 +111,7 @@ const UpdateJob = () => {
             </div>
             <div className="form-control md:w-1/2">
               <label className="label">
-                <span className="label-text">Deadline</span>
+                <span className="label-text text-white text-xl">Deadline</span>
               </label>
               <label className="input-group">
                
@@ -129,7 +129,7 @@ const UpdateJob = () => {
           <div className="flex gap-7 mb-6">
             <div className="form-control md:w-1/2">
               <label className="label">
-                <span className="label-text">Minimum Price</span>
+                <span className="label-text text-white text-xl">Minimum Price</span>
               </label>
               <label className="input-group">
                 
@@ -144,7 +144,7 @@ const UpdateJob = () => {
             </div>
             <div className="form-control md:w-1/2">
               <label className="label">
-                <span className="label-text">Maximum Price</span>
+                <span className="label-text text-white text-xl">Maximum Price</span>
               </label>
               <label className="input-group">
                
@@ -160,7 +160,7 @@ const UpdateJob = () => {
           </div>
           <div className="form-control w-full mb-6">
               <label className="label">
-                <span className="label-text">Description</span>
+                <span className="label-text text-white text-xl">Description</span>
               </label>
               <label className="input-group">
                

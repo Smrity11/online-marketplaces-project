@@ -59,6 +59,7 @@ const router = createBrowserRouter([
         {
             path: "bidsrequest",
             element: <PrivateRoute><BidRequests></BidRequests></PrivateRoute>,
+            loader:() => fetch('http://localhost:5000/bookingjob')
         },
       
       ]

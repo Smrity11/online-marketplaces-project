@@ -69,12 +69,12 @@ const AddJob = () => {
         <div className="flex gap-7 mb-6 ">
           <div className="form-control md:w-1/2 ">
             <label className="label">
-              <span className="label-text text-white">Email</span>
+              <span className="label-text text-white text-xl">Email</span>
             </label>
             <label className="input-group">
               <input
                 name="email"
-                type="text"
+                type="email"
                 defaultValue={user?.email}
                 readOnly
                 className="input input-bordered w-full inputbox"
@@ -108,7 +108,7 @@ const AddJob = () => {
         <div className="flex gap-7 mb-6">
           <div className="form-control md:w-1/2 ">
             <label className="label">
-              <span className="label-text text-white">Tittle</span>
+              <span className="label-text text-white text-xl">Tittle</span>
             </label>
             <label className="input-group">
               <input
@@ -121,12 +121,12 @@ const AddJob = () => {
           </div>
           <div className="form-control md:w-1/2">
             <label className="label">
-              <span className="label-text text-white">Deadline</span>
+              <span className="label-text text-white text-xl">Deadline</span>
             </label>
             <label className="input-group">
               <input
                 name="deadline"
-                type="text"
+                type="date"
                 placeholder="enter deadline"
                 className="input input-bordered w-full inputbox"
               />
@@ -137,7 +137,7 @@ const AddJob = () => {
         <div className="flex gap-7 mb-6">
           <div className="form-control md:w-1/2">
             <label className="label">
-              <span className="label-text text-white">Minimum Price</span>
+              <span className="label-text text-white text-xl">Minimum Price</span>
             </label>
             <label className="input-group">
               <input
@@ -151,7 +151,7 @@ const AddJob = () => {
           
           <div className="form-control md:w-1/2">
             <label className="label">
-              <span className="label-text text-white">Maximum Price</span>
+              <span className="label-text text-white text-xl">Maximum Price</span>
             </label>
             <label className="input-group">
               <input
@@ -165,7 +165,7 @@ const AddJob = () => {
         </div>
         <div className="form-control w-full mb-6">
           <label className="label">
-            <span className="label-text text-white">Description</span>
+            <span className="label-text text-white text-xl">Description</span>
           </label>
           <label className="input-group">
             <input

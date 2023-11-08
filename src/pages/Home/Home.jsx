@@ -1,3 +1,4 @@
+import ToolsSection from "./Extra/ToolsSection";
 import Banner from "./banner/Banner";
 import CategoryTab from "./category/CategoryTab";
 
@@ -7,6 +8,7 @@ const Home = () => {
         <div>
          <Banner></Banner>
             <CategoryTab></CategoryTab>
+            <ToolsSection></ToolsSection>
         </div>
     );
 };

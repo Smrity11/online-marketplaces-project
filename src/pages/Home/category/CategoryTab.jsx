@@ -8,7 +8,8 @@ import GraphicsDesign from './GraphicsDesign';
 
 const CategoryTab = () => {
     return (
-        <div className='md:px-8'>
+        <div className='md:px-8 my-10'>
+        <p className='text-center font-bold text-3xl my-14'>Our Job Category</p>
     
              <Tabs>
     <TabList className="flex text-center text-2xl bg-blue-950 text-white h-[70px] md:h-[50px]">

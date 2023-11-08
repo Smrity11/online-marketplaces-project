@@ -18,7 +18,7 @@ const BidRequests = () => {
   //   const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allbookingjob?email=${user?.email}`, {
+    fetch(`https://online-marketplaces-server-red.vercel.app/allbookingjob?email=${user?.email}`, {
       credentials: "include",
     })
       .then((res) => res.json())
@@ -34,16 +34,16 @@ const BidRequests = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Yes, cancel it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/bookingjob/${_id}`, {
+        fetch(`https://online-marketplaces-server-red.vercel.app/bookingjob/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
-              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+              Swal.fire("Deleted!", "this job has been canceled.", "success");
               const remaining = bids.filter((jobb) => jobb._id !== _id);
               setBids(remaining);
             }
@@ -54,7 +54,7 @@ const BidRequests = () => {
 
 
   const handleBookingConfirm = id => {
-    fetch(`http://localhost:5000/bookingjob/${id}`, {
+    fetch(`https://online-marketplaces-server-red.vercel.app/bookingjob/${id}`, {
         method: 'PATCH',
         headers: {
             'content-type': 'application/json'

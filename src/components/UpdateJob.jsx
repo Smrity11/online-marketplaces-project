@@ -29,7 +29,7 @@ const UpdateJob = () => {
        
 
         // send data to the server
-        fetch(`http://localhost:5000/postJob/${_id}` ,{
+        fetch(`https://online-marketplaces-server-red.vercel.app/postJob/${_id}` ,{
             method:"PUT",
             headers:{
                 "content-type" : "application/json"

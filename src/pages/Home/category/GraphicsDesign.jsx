@@ -8,7 +8,7 @@ const GraphicsDesign = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:5000/postJob')
+        fetch('https://online-marketplaces-server-red.vercel.app/postJob')
             .then(res => res.json())
             .then(data => {
                 setWebData(data);

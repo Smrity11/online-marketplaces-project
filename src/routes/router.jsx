@@ -44,13 +44,13 @@ const router = createBrowserRouter([
         {
             path: "mypostedjobs/update/:id",
             element: <PrivateRoute><UpdateJob></UpdateJob></PrivateRoute>,
-            loader: ({params}) => fetch(`http://localhost:5000/postJob/${params.id}`)
+            loader: ({params}) => fetch(`https://online-marketplaces-server-red.vercel.app/postJob/${params.id}`)
         },
 
         {
             path: "jobs/:id",
             element: <BidDetails></BidDetails>,
-            loader: ({params}) => fetch(`http://localhost:5000/postJob/${params.id}`)
+            loader: ({params}) => fetch(`https://online-marketplaces-server-red.vercel.app/postJob/${params.id}`)
         },
         {
             path: "mybids",
@@ -59,7 +59,7 @@ const router = createBrowserRouter([
         {
             path: "bidsrequest",
             element: <PrivateRoute><BidRequests></BidRequests></PrivateRoute>,
-            loader:() => fetch('http://localhost:5000/bookingjob')
+            loader:() => fetch('https://online-marketplaces-server-red.vercel.app/bookingjob')
         },
       
       ]

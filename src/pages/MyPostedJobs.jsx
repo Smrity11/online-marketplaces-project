@@ -15,7 +15,7 @@ const MyPostedJobs = () => {
 //   const axiosSecure = useAxiosSecure();
     
   useEffect(() => {
-      fetch(`http://localhost:5000/allpostJob?email=${user?.email}` ,{ credentials: 'include' })
+      fetch(`https://online-marketplaces-server-red.vercel.app/allpostJob?email=${user?.email}` ,{ credentials: 'include' })
       .then(res  => res.json())
       .then( data=> setJobs(data))
   }, []);
@@ -32,7 +32,7 @@ const MyPostedJobs = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/postJob/${_id}`, {
+        fetch(`https://online-marketplaces-server-red.vercel.app/postJob/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

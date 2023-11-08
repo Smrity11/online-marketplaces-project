@@ -44,7 +44,7 @@ const BidDetails = () => {
           }
 
         // send data to the server
-        fetch('http://localhost:5000/bookingjob', {
+        fetch('https://online-marketplaces-server-red.vercel.app/bookingjob', {
             method: 'POST', 
             headers: {
                 'content-type': 'application/json'

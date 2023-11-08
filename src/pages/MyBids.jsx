@@ -12,7 +12,7 @@ const MyBids = () => {
   //   const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allbookingjob?email=${user?.email}`, {
+    fetch(`https://online-marketplaces-server-red.vercel.app/allbookingjob?email=${user?.email}`, {
       credentials: "include",
     })
       .then((res) => res.json())
@@ -31,7 +31,7 @@ const MyBids = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/bookingjob/${_id}`, {
+        fetch(`https://online-marketplaces-server-red.vercel.app/bookingjob/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

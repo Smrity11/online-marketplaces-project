@@ -23,7 +23,7 @@ const BidRequestsRow = ({ booking ,handleDelete ,handleBookingConfirm}) => {
                     <span className="font-bold text-primary">Confirmed</span> 
                     </>:
                        <> <button onClick={() => handleBookingConfirm(_id)} className="btn btn-ghost btn-xs">Please Confirm</button>
-                       <button className="btn btn-error btn-xs" onClick={() =>handleDelete(_id)}> DELETE</button></>}
+                       <button className="btn btn-error btn-xs"> cancel</button></>}
             </th>
         </tr>
     );

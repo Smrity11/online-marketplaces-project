@@ -11,8 +11,7 @@ const BidDetails = () => {
 
     const jobData =useLoaderData()
     console.log("update data", jobData);
-    const{_id,email,deadline ,title} = jobData
-    console.log('jobdata id' , _id);
+    const{email,deadline ,title} = jobData
   
 
    
@@ -23,14 +22,14 @@ const BidDetails = () => {
         const buyerEmail = form.buyeremail.value
         const deadline = form.deadline.value
         const price = form.price.value
-      
+      console.log( "buyerEmail" , buyerEmail);
 
 
-        if (user?.email ===! email) {
+        if (user?.email === buyerEmail) {
           // Show alert if user's email matches the job's email
           Swal.fire({
               title: "Error",
-              text: "You cannot bid on your own project!",
+              text: "You cannot bid on your own Job!",
               icon: "error",
               confirmButtonText: "OK",
           });

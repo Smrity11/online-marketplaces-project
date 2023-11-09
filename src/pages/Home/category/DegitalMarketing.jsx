@@ -8,11 +8,11 @@ const DegitalMarketing = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch('https://online-marketplaces-server-red.vercel.app/postJob')
+        fetch('https://online-marketplaces-server-red.vercel.app/postJob' , {credentials:'include'})
             .then(res => res.json())
             .then(data => {
                 setWebData(data);
-                setIsLoading(false); // Set isLoading to false after data is loaded
+                setIsLoading(false); 
             })
             .catch(error => console.log(error.message));
 

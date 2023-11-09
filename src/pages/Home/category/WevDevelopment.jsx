@@ -9,10 +9,11 @@ const WevDevelopment = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch('https://online-marketplaces-server-red.vercel.app/postJob')
+        fetch('https://online-marketplaces-server-red.vercel.app/postJob' , {credentials:'include'})
             .then(res => res.json())
             .then(data => {
                 setWebData(data);
+                console.log("web data" ,data);
                 setIsLoading(false); // Set isLoading to false after data is loaded
             })
             .catch(error => console.log(error));
@@ -79,3 +80,9 @@ const WevDevelopment = () => {
 };
 
 export default WevDevelopment;
+
+
+
+
+
+

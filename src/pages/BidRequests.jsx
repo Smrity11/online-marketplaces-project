@@ -1,9 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 import BidRequestsRow from "../components/BidRelated/BidRequestsRow";
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const BidRequests = () => {
@@ -25,32 +27,34 @@ const BidRequests = () => {
       .then((data) => setBids(data));
   }, []);
 
-  const handleDelete = (_id) => {
-    console.log(_id);
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, cancel it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        fetch(`https://online-marketplaces-server-red.vercel.app/bookingjob/${_id}`, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.deletedCount > 0) {
-              Swal.fire("Deleted!", "this job has been canceled.", "success");
-              const remaining = bids.filter((jobb) => jobb._id !== _id);
-              setBids(remaining);
+
+  const handleBookingCancel = id => {
+    fetch(`https://online-marketplaces-server-red.vercel.app/bookingjob/${id}`, {
+        method: 'PATCH',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify({ status: 'cancel' })
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if (data.modifiedCount > 0) {
+              Swal.fire({
+                tittle: "success",
+                text: "job cancel successfully",
+                icon: "success",
+                confirmButtonText: "Cool",
+              });
+                // update state
+                const remaining = bids.filter(booking => booking._id !== id);
+                const updated = bids.find(booking => booking._id === id);
+                updated.status = 'cancel'
+                const newBookings = [updated, ...remaining];
+                setBids(newBookings);
             }
-          });
-      }
-    });
-  };
+        })
+}
 
 
   const handleBookingConfirm = id => {
@@ -65,12 +69,19 @@ const BidRequests = () => {
         .then(data => {
             console.log(data);
             if (data.modifiedCount > 0) {
+              Swal.fire({
+                tittle: "success",
+                text: "job Confirm successfully",
+                icon: "success",
+                confirmButtonText: "Cool",
+              });
                 // update state
                 const remaining = bids.filter(booking => booking._id !== id);
                 const updated = bids.find(booking => booking._id === id);
                 updated.status = 'confirm'
                 const newBookings = [updated, ...remaining];
                 setBids(newBookings);
+
             }
         })
 }
@@ -97,7 +108,7 @@ const BidRequests = () => {
             filtereddata.map(bid => <BidRequestsRow
                                 key={bid._id}
                                 booking={bid}
-                                handleDelete={handleDelete}
+                                handleBookingCancel={handleBookingCancel}
                                 handleBookingConfirm={handleBookingConfirm}
                             ></BidRequestsRow>)
                         }

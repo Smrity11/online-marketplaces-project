@@ -40,18 +40,18 @@ const BidRequests = () => {
         .then(data => {
             console.log(data);
             if (data.modifiedCount > 0) {
-              Swal.fire({
-                tittle: "success",
-                text: "job cancel successfully",
-                icon: "success",
-                confirmButtonText: "Cool",
-              });
                 // update state
                 const remaining = bids.filter(booking => booking._id !== id);
                 const updated = bids.find(booking => booking._id === id);
                 updated.status = 'cancel'
                 const newBookings = [updated, ...remaining];
                 setBids(newBookings);
+                Swal.fire({
+                  tittle: "success",
+                  text: "job cancel successfully",
+                  icon: "success",
+                  confirmButtonText: "Cool",
+                });
             }
         })
 }
@@ -69,19 +69,19 @@ const BidRequests = () => {
         .then(data => {
             console.log(data);
             if (data.modifiedCount > 0) {
-              Swal.fire({
-                tittle: "success",
-                text: "job Confirm successfully",
-                icon: "success",
-                confirmButtonText: "Cool",
-              });
+           
                 // update state
                 const remaining = bids.filter(booking => booking._id !== id);
                 const updated = bids.find(booking => booking._id === id);
                 updated.status = 'confirm'
                 const newBookings = [updated, ...remaining];
                 setBids(newBookings);
-
+                Swal.fire({
+                  tittle: "success",
+                  text: "job Confirm successfully",
+                  icon: "success",
+                  confirmButtonText: "Cool",
+                });
             }
         })
 }

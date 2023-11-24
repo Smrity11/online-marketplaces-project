@@ -1,9 +1,13 @@
 /* eslint-disable react/prop-types */
 
 
+
+
 const BidRequestsRow = ({ booking ,handleBookingConfirm ,handleBookingCancel }) => {
     const { _id, deadline, email, price,title,status } = booking;
     console.log("status" , status);
+ 
+   
     
     return (
         <tr className="text-[19px]">

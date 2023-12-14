@@ -11,6 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 import UpdateJob from "../components/UpdateJob";
 import Home from "../pages/Home/Home";
 import BidDetails from "../components/BidRelated/BidDetails";
+import Blog from "../pages/blog/Blog";
 
 
 
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
         {
             path: "addjob",
             element: <PrivateRoute><AddJob></AddJob></PrivateRoute>,
+        },
+        {
+            path: "blog",
+            element: <Blog></Blog>,
         },
         {
             path: "mypostedjobs",

@@ -6,7 +6,7 @@ const Footer = () => {
     
     return (
         <div>
-            <footer className="footer footer-center p-10 bg-blue-950 text-white text-primary-content ">
+            <footer className="footer footer-center p-10 bg-blue-950 text-white  ">
   <aside>
   <img
               className="w-[100px] ml-[-15px] md:ml-0 h-[45px] md:w-[120px] md:h-[75px] text-white"

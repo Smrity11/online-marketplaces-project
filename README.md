@@ -5,7 +5,7 @@
 Welcome to Techcanvas, your one-stop platform for web development, graphics design, and digital marketing services. Connect with skilled professionals and explore innovative tools to transform your ideas into reality.
 
 # TechCanvas
-[TechCanvasLiveLink Here](https://online-marketplace-project.web.app/)
+[TechCanvasLiveLink Here](https://online-marketplace-client.netlify.app/)
 
 ## Homepage Categories
 Web Development: Find experienced web developers to bring your digital projects to life.

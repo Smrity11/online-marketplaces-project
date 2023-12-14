@@ -95,8 +95,23 @@ const Navbar = () => {
           My Bids
         </NavLink>
       </li>
+      <li className="text-lg">
+        <NavLink
+          to="/blog"
+          className={({ isActive, isPending }) =>
+            isPending
+              ? "pending"
+              : isActive
+              ? "underline active"
+              : ""
+          }
+        >
+          {" "}
+          Blogs
+        </NavLink>
+      </li>
     </>
-  );
+  )
   return (
     <div>
 

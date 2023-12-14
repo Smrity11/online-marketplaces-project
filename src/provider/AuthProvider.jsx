@@ -12,7 +12,6 @@ import {
 } from "firebase/auth";
 import axios from "axios";
 
-
 export const AuthContext = createContext(null);
 
 const googleProvider = new GoogleAuthProvider();
@@ -39,38 +38,45 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, currentUser => {
-        const userEmail = currentUser?.email || user?.email;
-        const loggedUser = { email: userEmail };
-        setUser(currentUser);
-        console.log('current user', currentUser);
-        setLoading(false);
-        // if user exists then issue a token
-        if (currentUser) {
-            axios.post('https://online-marketplaces-server-red.vercel.app/jwt', loggedUser, { withCredentials: true })
-                .then(res => {
-                    console.log('token response', res.data);
-                })
-        }
-        else {
-            axios.post('https://online-marketplaces-server-red.vercel.app/logout', loggedUser, {
-                withCredentials: true
-            })
-                .then(res => {
-                    console.log(res.data);
-                })
-        }
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      const userEmail = currentUser?.email || user?.email;
+      const loggedUser = { email: userEmail };
+      setUser(currentUser);
+      console.log("current user", currentUser);
+      setLoading(false);
+      // if user exists then issue a token
+      if (currentUser) {
+        axios
+          .post(
+            "https://online-marketplaces-server-red.vercel.app/jwt",
+            loggedUser,
+            { withCredentials: true }
+          )
+          .then((res) => {
+            console.log("token response", res.data);
+          });
+      } else {
+        axios
+          .post(
+            "https://online-marketplaces-server-red.vercel.app/logout",
+            loggedUser,
+            {
+              withCredentials: true,
+            }
+          )
+          .then((res) => {
+            console.log(res.data);
+          });
+      }
     });
     return () => {
-        return unsubscribe();
-    }
-}, [])
+      return unsubscribe();
+    };
+  }, []);
 
   const authinfo = { user, loading, createUser, signIn, googleSignIn, logOut };
   return (
-    <AuthContext.Provider value={authinfo}>
-    {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={authinfo}>{children}</AuthContext.Provider>
   );
 };
 
